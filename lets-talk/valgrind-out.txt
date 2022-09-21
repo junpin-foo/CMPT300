@@ -1,0 +1,880 @@
+==16626== Memcheck, a memory error detector
+==16626== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==16626== Using Valgrind-3.18.1-42b08ed5bd-20211015 and LibVEX; rerun with -h for copyright info
+==16626== Command: ./lets-talk 3000 localhost 3001
+==16626== Parent PID: 10969
+==16626== 
+--16626-- 
+--16626-- Valgrind options:
+--16626--    --leak-check=full
+--16626--    --show-leak-kinds=all
+--16626--    --track-origins=yes
+--16626--    --verbose
+--16626--    --log-file=valgrind-out.txt
+--16626-- Contents of /proc/version:
+--16626--   Linux version 5.15.0-40-generic (buildd@lcy02-amd64-047) (gcc (Ubuntu 11.2.0-19ubuntu1) 11.2.0, GNU ld (GNU Binutils for Ubuntu) 2.38) #43-Ubuntu SMP Wed Jun 15 12:54:21 UTC 2022
+--16626-- 
+--16626-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-rdrand-rdseed
+--16626-- Page sizes: currently 4096, max supported 4096
+--16626-- Valgrind library directory: /usr/libexec/valgrind
+--16626-- Reading syms from /home/junpin/Desktop/Assignment 3/lets-talk
+--16626-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2
+--16626--   Considering /usr/lib/debug/.build-id/aa/1b0b998999c397062e1016f0c95dc0e8820117.debug ..
+--16626--   .. build-id is valid
+--16626-- Reading syms from /usr/libexec/valgrind/memcheck-amd64-linux
+--16626--    object doesn't have a symbol table
+--16626--    object doesn't have a dynamic symbol table
+--16626-- Scheduler: using generic scheduler lock implementation.
+--16626-- Reading suppressions file: /usr/libexec/valgrind/default.supp
+==16626== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-16626-by-junpin-on-???
+==16626== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-16626-by-junpin-on-???
+==16626== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-16626-by-junpin-on-???
+==16626== 
+==16626== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==16626== don't want to do, unless you know exactly what you're doing,
+==16626== or are doing some strange experiment):
+==16626==   /usr/bin/vgdb --pid=16626 ...command...
+==16626== 
+==16626== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==16626==   /path/to/gdb ./lets-talk
+==16626== and then give GDB the following command
+==16626==   target remote | /usr/bin/vgdb --pid=16626
+==16626== --pid is optional if only one valgrind process is running
+==16626== 
+--16626-- REDIR: 0x402aa60 (ld-linux-x86-64.so.2:strlen) redirected to 0x580bcec2 (???)
+--16626-- REDIR: 0x402a830 (ld-linux-x86-64.so.2:index) redirected to 0x580bcedc (???)
+--16626-- Reading syms from /usr/libexec/valgrind/vgpreload_core-amd64-linux.so
+--16626--    object doesn't have a symbol table
+--16626-- Reading syms from /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so
+--16626--    object doesn't have a symbol table
+==16626== WARNING: new redirection conflicts with existing -- ignoring it
+--16626--     old: 0x0402aa60 (strlen              ) R-> (0000.0) 0x580bcec2 ???
+--16626--     new: 0x0402aa60 (strlen              ) R-> (2007.0) 0x0484ee30 strlen
+--16626-- REDIR: 0x4027240 (ld-linux-x86-64.so.2:strcmp) redirected to 0x484fcd0 (strcmp)
+--16626-- REDIR: 0x402afc0 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4853840 (mempcpy)
+--16626-- Reading syms from /usr/lib/x86_64-linux-gnu/libc.so.6
+--16626--   Considering /usr/lib/debug/.build-id/89/c3cb85f9e55046776471fed05ec441581d1969.debug ..
+--16626--   .. build-id is valid
+==16626== WARNING: new redirection conflicts with existing -- ignoring it
+--16626--     old: 0x04911ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--16626--     new: 0x04911ce0 (memalign            ) R-> (1017.0) 0x0484e050 aligned_alloc
+==16626== WARNING: new redirection conflicts with existing -- ignoring it
+--16626--     old: 0x04911ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--16626--     new: 0x04911ce0 (memalign            ) R-> (1017.0) 0x0484e020 aligned_alloc
+==16626== WARNING: new redirection conflicts with existing -- ignoring it
+--16626--     old: 0x04911ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--16626--     new: 0x04911ce0 (memalign            ) R-> (1017.0) 0x0484e050 aligned_alloc
+==16626== WARNING: new redirection conflicts with existing -- ignoring it
+--16626--     old: 0x04911ce0 (memalign            ) R-> (1011.0) 0x0484e080 memalign
+--16626--     new: 0x04911ce0 (memalign            ) R-> (1017.0) 0x0484e020 aligned_alloc
+--16626-- REDIR: 0x49147a0 (libc.so.6:strnlen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914a60 (libc.so.6:strpbrk) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914360 (libc.so.6:strcmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4932d50 (libc.so.6:wcsnlen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915750 (libc.so.6:memset) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49315c0 (libc.so.6:wcslen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915c90 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49313f0 (libc.so.6:wcschr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49142e0 (libc.so.6:index) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49149e0 (libc.so.6:rindex) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915620 (libc.so.6:memmove) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+==16626== Preferring higher priority redirection:
+--16626--     old: 0x04a0c940 (__memcpy_avx_unalign) R-> (2018.0) 0x04850f90 __memcpy_avx_unaligned_erms
+--16626--     new: 0x04a0c940 (__memcpy_avx_unalign) R-> (2018.1) 0x04852880 memmove
+--16626-- REDIR: 0x4931470 (libc.so.6:wcscmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915a60 (libc.so.6:stpncpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4931a30 (libc.so.6:wmemchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49148b0 (libc.so.6:strncmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915af0 (libc.so.6:strcasecmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49144a0 (libc.so.6:strcspn) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49314f0 (libc.so.6:wcscpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914250 (libc.so.6:strcat) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915be0 (libc.so.6:strncasecmp_l) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915500 (libc.so.6:bcmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x491d5f0 (libc.so.6:memrchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4917090 (libc.so.6:strchrnul) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914410 (libc.so.6:strcpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915b90 (libc.so.6:strcasecmp_l) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914720 (libc.so.6:strlen) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914950 (libc.so.6:strncpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x49159d0 (libc.so.6:stpcpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915470 (libc.so.6:memchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4914b80 (libc.so.6:strspn) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915850 (libc.so.6:mempcpy) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4915b40 (libc.so.6:strncasecmp) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4917000 (libc.so.6:rawmemchr) redirected to 0x483f220 (_vgnU_ifunc_wrapper)
+--16626-- REDIR: 0x4a09790 (libc.so.6:__strrchr_avx2) redirected to 0x484e810 (rindex)
+--16626-- REDIR: 0x4a09960 (libc.so.6:__strlen_avx2) redirected to 0x484ed10 (strlen)
+--16626-- REDIR: 0x4911120 (libc.so.6:malloc) redirected to 0x4848820 (malloc)
+--16626-- REDIR: 0x49125a0 (libc.so.6:calloc) redirected to 0x484d9d0 (calloc)
+--16626-- REDIR: 0x4a0d100 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x4852770 (memset)
+--16626-- REDIR: 0x4a09300 (libc.so.6:__strchr_avx2) redirected to 0x484e9f0 (index)
+--16626-- REDIR: 0x4915040 (libc.so.6:__GI_strstr) redirected to 0x4853ae0 (__strstr_sse2)
+--16626-- REDIR: 0x4a05440 (libc.so.6:__memchr_avx2) redirected to 0x484fd50 (memchr)
+--16626-- REDIR: 0x4a0c940 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x4852880 (memmove)
+--16626-- REDIR: 0x4a09580 (libc.so.6:__strchrnul_avx2) redirected to 0x4853330 (strchrnul)
+--16626-- REDIR: 0x4a07930 (libc.so.6:__strncasecmp_avx) redirected to 0x484f640 (strncasecmp)
+--16626-- REDIR: 0x4911460 (libc.so.6:free) redirected to 0x484b210 (free)
+--16626-- REDIR: 0x4a04f00 (libc.so.6:__strncmp_avx2) redirected to 0x484f3e0 (strncmp)
+--16626-- REDIR: 0x4a04870 (libc.so.6:__strpbrk_sse42) redirected to 0x4853c00 (strpbrk)
+--16626-- REDIR: 0x4a04ac0 (libc.so.6:__strcmp_avx2) redirected to 0x484fbd0 (strcmp)
+--16626-- REDIR: 0x4a062b0 (libc.so.6:__strcasecmp_avx) redirected to 0x484f560 (strcasecmp)
+--16626-- REDIR: 0x4a0b1c0 (libc.so.6:__strncpy_avx2) redirected to 0x484efe0 (strncpy)
+==16626== Thread 3:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A29: sender_function (lets-talk.c:175)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A29: sender_function (lets-talk.c:175)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x109A43: sender_function (lets-talk.c:176)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484FBD4: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A72: sender_function (lets-talk.c:179)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1095B1: encrypt (lets-talk.c:65)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1095B1: encrypt (lets-talk.c:65)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x1095CB: encrypt (lets-talk.c:67)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid write of size 1
+==16626==    at 0x1095F0: encrypt (lets-talk.c:67)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109AF7: sender_function (lets-talk.c:190)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109AF7: sender_function (lets-talk.c:190)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Syscall param socketcall.sendto(msg) points to unaddressable byte(s)
+==16626==    at 0x4993C16: sendto (sendto.c:27)
+==16626==    by 0x109B16: sender_function (lets-talk.c:190)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10961F: decrypt (lets-talk.c:73)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10961F: decrypt (lets-talk.c:73)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x109639: decrypt (lets-talk.c:75)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x109673: decrypt (lets-talk.c:79)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid write of size 1
+==16626==    at 0x109688: decrypt (lets-talk.c:79)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484FBD4: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109B63: sender_function (lets-talk.c:198)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484FBE8: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A72: sender_function (lets-talk.c:179)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa08c1 is 1 bytes inside a block of size 9 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== Invalid read of size 1
+==16626==    at 0x484FBE8: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109B63: sender_function (lets-talk.c:198)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa08c1 is 1 bytes inside a block of size 9 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+--16626-- REDIR: 0x4a0c900 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4853440 (mempcpy)
+==16626== 
+==16626== HEAP SUMMARY:
+==16626==     in use at exit: 1,609 bytes in 8 blocks
+==16626==   total heap usage: 50 allocs, 42 frees, 36,141 bytes allocated
+==16626== 
+==16626== Searching for pointers to 8 not-freed blocks
+==16626== Checked 42,035,840 bytes
+==16626== 
+==16626== Thread 1:
+==16626== 64 bytes in 1 blocks are still reachable in loss record 1 of 8
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x4976189: gaih_inet.constprop.0 (getaddrinfo.c:1039)
+==16626==    by 0x49785D8: getaddrinfo (getaddrinfo.c:2240)
+==16626==    by 0x109C2C: receiver_function (lets-talk.c:220)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 64 bytes in 1 blocks are still reachable in loss record 2 of 8
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x4976189: gaih_inet.constprop.0 (getaddrinfo.c:1039)
+==16626==    by 0x49785D8: getaddrinfo (getaddrinfo.c:2240)
+==16626==    by 0x109922: sender_function (lets-talk.c:148)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 121 bytes in 1 blocks are definitely lost in loss record 3 of 8
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x49140C8: __libc_alloc_buffer_allocate (alloc_buffer_allocate.c:26)
+==16626==    by 0x49BCE35: alloc_buffer_allocate (alloc_buffer.h:143)
+==16626==    by 0x49BCE35: __resolv_conf_allocate (resolv_conf.c:391)
+==16626==    by 0x49B7EDA: __resolv_conf_load (res_init.c:599)
+==16626==    by 0x49BCA2E: __resolv_conf_get_current (resolv_conf.c:140)
+==16626==    by 0x49B8564: __res_vinit (res_init.c:628)
+==16626==    by 0x49BD9FF: maybe_init (resolv_context.c:122)
+==16626==    by 0x49BD9FF: context_get (resolv_context.c:184)
+==16626==    by 0x49BD9FF: context_get (resolv_context.c:176)
+==16626==    by 0x49BD9FF: __resolv_context_get (resolv_context.c:195)
+==16626==    by 0x49A365C: gethostbyname2_r@@GLIBC_2.2.5 (getXXbyYY_r.c:213)
+==16626==    by 0x4976CA6: gaih_inet.constprop.0 (getaddrinfo.c:559)
+==16626==    by 0x49785D8: getaddrinfo (getaddrinfo.c:2240)
+==16626==    by 0x109922: sender_function (lets-talk.c:148)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626== 
+==16626== 272 bytes in 1 blocks are possibly lost in loss record 4 of 8
+==16626==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==16626==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==16626==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==16626==    by 0x4901834: allocate_stack (allocatestack.c:430)
+==16626==    by 0x4901834: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==16626==    by 0x10A0B3: chat (lets-talk.c:329)
+==16626==    by 0x10A2D1: main (lets-talk.c:435)
+==16626== 
+==16626== 272 bytes in 1 blocks are possibly lost in loss record 5 of 8
+==16626==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==16626==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==16626==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==16626==    by 0x4901834: allocate_stack (allocatestack.c:430)
+==16626==    by 0x4901834: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==16626==    by 0x10A102: chat (lets-talk.c:342)
+==16626==    by 0x10A2D1: main (lets-talk.c:435)
+==16626== 
+==16626== 272 bytes in 1 blocks are possibly lost in loss record 6 of 8
+==16626==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==16626==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==16626==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==16626==    by 0x4901834: allocate_stack (allocatestack.c:430)
+==16626==    by 0x4901834: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==16626==    by 0x10A147: chat (lets-talk.c:349)
+==16626==    by 0x10A2D1: main (lets-talk.c:435)
+==16626== 
+==16626== 272 bytes in 1 blocks are possibly lost in loss record 7 of 8
+==16626==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==16626==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==16626==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==16626==    by 0x4901834: allocate_stack (allocatestack.c:430)
+==16626==    by 0x4901834: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==16626==    by 0x10A196: chat (lets-talk.c:358)
+==16626==    by 0x10A2D1: main (lets-talk.c:435)
+==16626== 
+==16626== 272 bytes in 1 blocks are possibly lost in loss record 8 of 8
+==16626==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x40147D9: calloc (rtld-malloc.h:44)
+==16626==    by 0x40147D9: allocate_dtv (dl-tls.c:375)
+==16626==    by 0x40147D9: _dl_allocate_tls (dl-tls.c:634)
+==16626==    by 0x4901834: allocate_stack (allocatestack.c:430)
+==16626==    by 0x4901834: pthread_create@@GLIBC_2.34 (pthread_create.c:647)
+==16626==    by 0x109AA3: sender_function (lets-talk.c:181)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== LEAK SUMMARY:
+==16626==    definitely lost: 121 bytes in 1 blocks
+==16626==    indirectly lost: 0 bytes in 0 blocks
+==16626==      possibly lost: 1,360 bytes in 5 blocks
+==16626==    still reachable: 128 bytes in 2 blocks
+==16626==         suppressed: 0 bytes in 0 blocks
+==16626== 
+==16626== ERROR SUMMARY: 170 errors from 25 contexts (suppressed: 0 from 0)
+==16626== 
+==16626== 3 errors in context 1 of 25:
+==16626== Thread 3:
+==16626== Invalid read of size 1
+==16626==    at 0x484FBD4: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109B63: sender_function (lets-talk.c:198)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 2 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10961F: decrypt (lets-talk.c:73)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 3 of 25:
+==16626== Syscall param socketcall.sendto(msg) points to unaddressable byte(s)
+==16626==    at 0x4993C16: sendto (sendto.c:27)
+==16626==    by 0x109B16: sender_function (lets-talk.c:190)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 4 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109AF7: sender_function (lets-talk.c:190)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 5 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1095B1: encrypt (lets-talk.c:65)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 6 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484FBD4: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A72: sender_function (lets-talk.c:179)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 7 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x109A43: sender_function (lets-talk.c:176)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 3 errors in context 8 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED16: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A29: sender_function (lets-talk.c:175)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 6 errors in context 9 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484FBE8: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109B63: sender_function (lets-talk.c:198)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa08c1 is 1 bytes inside a block of size 9 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 8 errors in context 10 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484FBE8: strcmp (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A72: sender_function (lets-talk.c:179)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa08c1 is 1 bytes inside a block of size 9 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 11 of 25:
+==16626== Invalid write of size 1
+==16626==    at 0x109688: decrypt (lets-talk.c:79)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 12 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x109673: decrypt (lets-talk.c:79)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 13 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x109639: decrypt (lets-talk.c:75)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 14 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10961F: decrypt (lets-talk.c:73)
+==16626==    by 0x109B49: sender_function (lets-talk.c:196)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 15 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109AF7: sender_function (lets-talk.c:190)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 16 of 25:
+==16626== Invalid write of size 1
+==16626==    at 0x1095F0: encrypt (lets-talk.c:67)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 17 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x1095CB: encrypt (lets-talk.c:67)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0720 is 0 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 18 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1095B1: encrypt (lets-talk.c:65)
+==16626==    by 0x109AD1: sender_function (lets-talk.c:188)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== 
+==16626== 14 errors in context 19 of 25:
+==16626== Invalid read of size 1
+==16626==    at 0x484ED24: strlen (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x109A29: sender_function (lets-talk.c:175)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Address 0x4aa0721 is 1 bytes inside a block of size 4 free'd
+==16626==    at 0x484B27F: free (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x1098B6: kbInput_function (lets-talk.c:133)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626==  Block was alloc'd at
+==16626==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==16626==    by 0x10980E: kbInput_function (lets-talk.c:121)
+==16626==    by 0x4900B42: start_thread (pthread_create.c:442)
+==16626==    by 0x4991BB3: clone (clone.S:100)
+==16626== 
+==16626== ERROR SUMMARY: 170 errors from 25 contexts (suppressed: 0 from 0)
